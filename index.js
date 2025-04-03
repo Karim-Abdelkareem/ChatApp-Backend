@@ -25,6 +25,9 @@ const io = new Server(server, {
 app.set("io", io);
 
 // Routes
+app.get("/", (req, res) => {
+  res.send("Server is running...");
+});
 app.use("/api/v1/users", userRouter);
 app.use("/api/v1/messages", messageRouter);
 app.use(globalError);

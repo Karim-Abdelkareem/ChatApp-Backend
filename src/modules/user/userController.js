@@ -1,6 +1,6 @@
 import userModel from "./userModel.js";
 import catchAsync from "../../middleware/catchAsync.js";
-import AppError from "../../utils/appError.js";
+import AppError from "../../utils/AppError.js";
 import { sendEmail, generateOTP } from "../../mails/email.js";
 import jwt from "jsonwebtoken";
 import { promisify } from "util";

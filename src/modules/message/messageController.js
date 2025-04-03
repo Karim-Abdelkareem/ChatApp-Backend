@@ -1,6 +1,6 @@
 import catchAsync from "../../middleware/catchAsync.js";
 import messageModel from "./messageModel.js";
-import AppError from "../../utils/appError.js";
+import AppError from "../../utils/AppError.js";
 
 export const sendMessage = catchAsync(async (req, res, next) => {
   const { message, sender, receiver } = req.body;
