@@ -15,7 +15,7 @@ export const generateOTP = () => {
 };
 
 export const sendEmail = async (email, otp, type = "signup") => {
-  const confirmUrl = `${process.env.CLIENT_URL}/confirm-email?email=${email}&otp=${otp}`;
+  const confirmUrl = `${process.env.CLIENT_URL}/confirm?email=${email}&otp=${otp}`;
 
   const mailOptions = {
     from: process.env.GMAIL_USER,
