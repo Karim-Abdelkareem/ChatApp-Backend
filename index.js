@@ -27,6 +27,7 @@ const io = new Server(server, {
     origin: "*",
     methods: ["GET", "POST"],
     credentials: true,
+    allowedHeaders: ["Authorization", "Content-Type"],
   },
 });
 app.set("io", io);
