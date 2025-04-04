@@ -18,7 +18,10 @@ app.use(express.json());
 const server = http.createServer(app);
 const io = new Server(server, {
   cors: {
-    origin: "*",
+    origin: [
+      "http://localhost:5173",
+      "https://chat-app-react-livid.vercel.app/",
+    ],
     methods: ["GET", "POST"],
   },
 });
