@@ -25,6 +25,8 @@ const io = new Server(server, {
   cors: {
     origin: "*",
   },
+  transports: ["websocket", "polling"],
+  withCredentials: true,
 });
 
 app.set("io", io);
