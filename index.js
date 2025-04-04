@@ -16,7 +16,7 @@ app.use(express.json());
 // Handle CORS for both API and WebSocket
 app.use(
   cors({
-    origin: "https://chat-app-react-livid.vercel.app",
+    origin: "*",
     credentials: true,
     methods: ["GET", "POST", "OPTIONS"],
   })
@@ -27,10 +27,9 @@ const server = http.createServer(app);
 
 const io = new Server(server, {
   cors: {
-    origin: "https://chat-app-react-livid.vercel.app",
+    origin: "*",
     methods: ["GET", "POST"],
     credentials: true,
-    allowedHeaders: ["Content-Type"],
   },
 });
 
