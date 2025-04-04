@@ -11,18 +11,20 @@ import messageRouter from "./src/modules/message/messageRouter.js";
 dotenv.config();
 
 const app = express();
-app.use(cors());
+app.use(cors({
+  origin: "https://chat-app-react-livid.vercel.app",
+  methods: ["GET", "POST"],
+  credentials: true
+}));
 app.use(express.json());
 
 // Attach socket.io to app for access in route handlers
 const server = http.createServer(app);
 const io = new Server(server, {
   cors: {
-    origin: [
-      "http://localhost:5173",
-      "https://chat-app-react-livid.vercel.app/",
-    ],
+    origin: ["http://localhost:5173", "https://chat-app-react-livid.vercel.app"], 
     methods: ["GET", "POST"],
+    credentials: true, 
   },
 });
 app.set("io", io);
