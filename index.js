@@ -20,6 +20,7 @@ app.use(cors({ origin: "https://chat-app-react-livid.vercel.app" }));
 const io = new Server(server, {
   cors: {
     origin: "https://chat-app-react-livid.vercel.app",
+    methods: ["GET", "POST"],
   },
 });
 app.set("io", io);
