@@ -25,7 +25,7 @@ const io = new Server(server, {
   cors: {
     origin: "https://chat-app-react-livid.vercel.app",
     methods: ["GET", "POST"],
-    allowedHeaders: ["Content-Type", "Authorization"],
+    credentials: true,
   },
   transports: ["websocket", "polling"],
   withCredentials: true,
