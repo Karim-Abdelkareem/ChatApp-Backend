@@ -22,14 +22,7 @@ app.use(express.json());
 
 // Attach socket.io to app for access in route handlers
 const server = http.createServer(app);
-const io = new Server(server, {
-  cors: {
-    origin: "*",
-    methods: ["GET", "POST"],
-    credentials: true,
-    allowedHeaders: ["Authorization", "Content-Type"],
-  },
-});
+const io = new Server(server);
 app.set("io", io);
 
 // Routes
