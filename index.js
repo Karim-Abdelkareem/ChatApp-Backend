@@ -13,19 +13,28 @@ dotenv.config();
 const app = express();
 app.use(express.json());
 
-// Attach socket.io to app for access in route handlers
-const server = http.createServer(app);
+// Handle CORS for both API and WebSocket
 app.use(
-  cors({ origin: "https://chat-app-react-livid.vercel.app", credentials: true })
+  cors({
+    origin: "https://chat-app-react-livid.vercel.app",
+    credentials: true,
+    methods: ["GET", "POST", "OPTIONS"],
+  })
 );
+
+// WebSocket server attached to HTTP server
+const server = http.createServer(app);
 
 const io = new Server(server, {
   cors: {
     origin: "https://chat-app-react-livid.vercel.app",
     methods: ["GET", "POST"],
     credentials: true,
+    allowedHeaders: ["Content-Type"],
   },
+  transports: ["websocket", "polling"], // Allow both WebSocket and polling
 });
+
 app.set("io", io);
 
 // Routes
@@ -34,7 +43,7 @@ app.get("/", (req, res) => {
 });
 app.use("/api/v1/users", userRouter);
 app.use("/api/v1/messages", messageRouter);
-app.use(globalError);
+app.use(globalError); // Global error handling
 
 // WebSocket Users Store
 const users = {};
