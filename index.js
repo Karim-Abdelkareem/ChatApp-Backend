@@ -17,8 +17,6 @@ app.use(express.json());
 app.use(
   cors({
     origin: "*",
-    credentials: true,
-    methods: ["GET", "POST", "OPTIONS"],
   })
 );
 
@@ -28,8 +26,6 @@ const server = http.createServer(app);
 const io = new Server(server, {
   cors: {
     origin: "*",
-    methods: ["GET", "POST"],
-    credentials: true,
   },
 });
 
