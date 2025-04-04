@@ -15,12 +15,15 @@ app.use(express.json());
 
 // Attach socket.io to app for access in route handlers
 const server = http.createServer(app);
-app.use(cors({ origin: "https://chat-app-react-livid.vercel.app" }));
+app.use(
+  cors({ origin: "https://chat-app-react-livid.vercel.app", credentials: true })
+);
 
 const io = new Server(server, {
   cors: {
     origin: "https://chat-app-react-livid.vercel.app",
     methods: ["GET", "POST"],
+    credentials: true,
   },
 });
 app.set("io", io);
