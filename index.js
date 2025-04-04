@@ -32,10 +32,11 @@ const io = new Server(server, {
     credentials: true,
     allowedHeaders: ["Content-Type"],
   },
-  transports: ["websocket", "polling"], // Allow both WebSocket and polling
 });
 
 app.set("io", io);
+
+app.options("*", cors());
 
 // Routes
 app.get("/", (req, res) => {
