@@ -11,13 +11,7 @@ import messageRouter from "./src/modules/message/messageRouter.js";
 dotenv.config();
 
 const app = express();
-app.use(
-  cors({
-    origin: "*",
-    methods: ["GET", "POST"],
-    credentials: true,
-  })
-);
+app.use(cors());
 app.use(express.json());
 
 // Attach socket.io to app for access in route handlers
