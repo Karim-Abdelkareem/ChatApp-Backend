@@ -13,14 +13,12 @@ dotenv.config();
 const app = express();
 app.use(express.json());
 
-// Handle CORS for both API and WebSocket
 app.use(
   cors({
     origin: "*",
   })
 );
 
-// WebSocket server attached to HTTP server
 const server = http.createServer(app);
 
 const io = new Server(server, {
@@ -31,15 +29,13 @@ const io = new Server(server, {
 
 app.set("io", io);
 
-app.options("*", cors());
-
 // Routes
 app.get("/", (req, res) => {
   res.send("Server is running...");
 });
 app.use("/api/v1/users", userRouter);
 app.use("/api/v1/messages", messageRouter);
-app.use(globalError); // Global error handling
+app.use(globalError);
 
 // WebSocket Users Store
 const users = {};
